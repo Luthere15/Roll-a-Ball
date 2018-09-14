@@ -3,51 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Playercontroller : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-
     public float speed;
-    public TextAlignment CountText;
-    public TextAlignment winText;
-
     private Rigidbody rb;
-    private int count;
-
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        count = 0;
-
-        SetCountText();
-
-        winText.text = "";
-
-
     }
 
-    private void SetCountText()
-    {
-        throw new NotImplementedException();
-    }
+   
 
     void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        rb.AddForce(movement * speed);
+        rb.AddForce(movement*speed);
     }
 
-
-    void onTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Pick Up"))
-        {
-            other.gameObject.SetActive(false);
-
-        }
-    }
 
 
 
